@@ -1,0 +1,3 @@
+"""
+Destructor for secrets
+"""

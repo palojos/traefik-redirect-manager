@@ -1,0 +1,3 @@
+"""
+Destructor for ingress resources
+"""

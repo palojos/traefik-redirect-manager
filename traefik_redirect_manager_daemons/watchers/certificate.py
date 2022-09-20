@@ -1,0 +1,3 @@
+"""
+Watcher for certificate resource
+"""
