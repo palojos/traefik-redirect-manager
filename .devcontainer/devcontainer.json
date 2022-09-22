@@ -1,0 +1,7 @@
+{
+  "name": "traefik-redirec-manager",
+  "dockerComposeFile": "./docker-compose.yml",
+  "shutdownAction": "stopCompose",
+  "workspaceFolder": "/workspace",
+  "service": "python"
+}

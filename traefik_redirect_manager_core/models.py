@@ -1,11 +1,11 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 from typing import Optional
 
 @dataclass
 class CreateRouteRequest:
     """Request to create redirect to target when source is accessed"""
-    name: str
+    display_name: str
     source: str
     target: str
 
@@ -28,16 +28,17 @@ class Resource:
     name: str
 
 @dataclass
+class RouteChildResources:
+    """Child resources which are required for route to operate"""
+    ingress_route: Optional[Resource] = None
+    tls_credentials_secret: Optional[Resource] = None
+    certificate: Optional[Resource] = None
+
+@dataclass
 class Route(Resource):
     """Established route which redirects requests to source into target"""
     source: str
     target: str
+    display_name: str
     status: RouteStatus = RouteStatus.UNKNOWN
-    resources: RouteChildResources = RouteChildResources()
-
-@dataclass
-class RouteChildResources:
-    """Child resources which are required for route to operate"""
-    ingress_route: Optional[Resource] = None
-    tls_cerdentials_secret: Optional[Resource] = None
-    certificate: Optional[Resource] = None
+    resources: RouteChildResources = field(default_factory=RouteChildResources)

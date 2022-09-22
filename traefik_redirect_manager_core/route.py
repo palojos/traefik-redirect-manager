@@ -1,15 +1,21 @@
+from typing import Any
+from .models import CreateRouteRequest, Route, RouteStatus
 
 def has_certificate_guard(route: Route) -> bool:
     """Checks if route has certificate reference"""
+    return route.resources.certificate is not None
 
 def has_tls_credentials_guard(route: Route) -> bool:
     """Checks if route has tls_credentials"""
+    return route.resources.tls_credentials_secret is not None
 
 def has_ingress_guard(route: Route) -> bool:
     """Checks if route has ingress defined"""
+    return route.resources.ingress_route is not None
 
 def is_active_guard(route: Route) -> bool:
     """Checks if route is active, i.e. all required resources are defined"""
+    return route.status == RouteStatus.ACTIVE
 
 def create_route(request: CreateRouteRequest) -> Route:
     """Create new route definition from request"""

@@ -26,28 +26,22 @@ spec:
                   type: string
                 target: 
                   type: string
-            state:
-              type: string
-            childResources:
+            status:
+              x-kubernetes-preserve-unknown-fields: true
               type: object
-              properties:
-                ingressRoute:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                certificate:
-                  type: object
-                  properties:
-                    name:
-                      type: string
-                tlsCredentialsSecret:
-                  type: object
-                  properties:
-                    name:
-                      type: string
   scope: Namespaced
   names:
     plural: redirectroutes
     singular: redirectroute
     kind: RedirectRoute
+---
+# RBAC service account
+
+---
+# RBAC role
+
+---
+# RBAC role binding
+
+---
+# Deployment
